@@ -5676,6 +5676,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var moment = require("moment");
 var timeLabel = document.getElementById('timer__time');
+var timeTitle = document.getElementById('timer__title');
 function toggleButtons() {
     timeLabel.innerHTML = '0';
     var elms = document.getElementsByClassName('btn');
@@ -5683,10 +5684,18 @@ function toggleButtons() {
         elms[i].classList.toggle('hidden');
     }
 }
+function hideSetIntervalInterface() {
+    toggleButtons();
+    timeTitle.innerHTML = 'Осталось:';
+}
+function showSetIntervalInterface() {
+    toggleButtons();
+    timeTitle.innerHTML = 'Укажите время в минутах';
+}
 function tick(time) {
     timeLabel.innerHTML = moment.unix(time).format('mm:ss');
     if (time === 0) {
-        toggleButtons();
+        showSetIntervalInterface();
         return;
     }
     setTimeout(function () {
@@ -5705,7 +5714,7 @@ function decTime() {
 function start() {
     var timeDuration = Number(timeLabel.innerHTML) * 60;
     if (timeDuration === 0) return;
-    toggleButtons();
+    hideSetIntervalInterface();
     tick(timeDuration);
 }
 var incBtn = document.getElementById('timer__inc-btn');

@@ -1,6 +1,7 @@
 import * as moment from 'moment';
 
 const timeLabel = document.getElementById('timer__time');
+const timeTitle = document.getElementById('timer__title');
 
 function toggleButtons() {
   timeLabel.innerHTML = '0';
@@ -10,10 +11,20 @@ function toggleButtons() {
   }
 }
 
+function hideSetIntervalInterface() {
+  toggleButtons();
+  timeTitle.innerHTML = 'Осталось:';
+}
+
+function showSetIntervalInterface() {
+  toggleButtons();
+  timeTitle.innerHTML = 'Укажите время в минутах';
+}
+
 function tick(time: number) {
   timeLabel.innerHTML = moment.unix(time).format('mm:ss');
   if (time === 0) {
-    toggleButtons();
+    showSetIntervalInterface();
     return;
   }
   setTimeout(() => tick(time - 1), 1000);
@@ -33,7 +44,7 @@ function decTime() {
 function start() {
   const timeDuration = Number(timeLabel.innerHTML) * 60;
   if (timeDuration === 0) return;
-  toggleButtons();
+  hideSetIntervalInterface();
   tick(timeDuration);
 }
 

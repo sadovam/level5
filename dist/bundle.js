@@ -5674,37 +5674,32 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.sayHello = void 0;
-function sayHello(name) {
-    return "Hello from " + name;
-}
-exports.sayHello = sayHello;
-
-},{}],3:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var greet_1 = require("./greet");
 var moment = require("moment");
-function showHello(divName, name) {
-    var elt = document.getElementById(divName);
-    elt.innerText = greet_1.sayHello(name);
+var timeLabel = document.getElementById('timer__time');
+function toggleButtons() {
+    timeLabel.innerHTML = '0';
+    var elms = document.getElementsByClassName('btn');
+    for (var i = 0; i < elms.length; i += 1) {
+        elms[i].classList.toggle('hidden');
+    }
 }
-showHello("greeting", "Type Script");
-var incBtn = document.getElementById("timer__inc-btn");
-incBtn.onclick = incTime;
-var decBtn = document.getElementById("timer__dec-btn");
-decBtn.onclick = decTime;
-var startBtn = document.getElementById("timer__start-btn");
-startBtn.onclick = start;
-var timeLabel = document.getElementById("timer__time");
+function tick(time) {
+    timeLabel.innerHTML = moment.unix(time).format('mm:ss');
+    if (time === 0) {
+        toggleButtons();
+        return;
+    }
+    setTimeout(function () {
+        return tick(time - 1);
+    }, 1000);
+}
 function incTime() {
     var timeDuration = Number(timeLabel.innerHTML) + 1;
     timeLabel.innerHTML = String(timeDuration);
 }
 function decTime() {
     var timeDuration = Number(timeLabel.innerHTML);
-    if (timeDuration > 0) timeDuration--;
+    if (timeDuration > 0) timeDuration -= 1;
     timeLabel.innerHTML = String(timeDuration);
 }
 function start() {
@@ -5713,24 +5708,13 @@ function start() {
     toggleButtons();
     tick(timeDuration);
 }
-function toggleButtons() {
-    timeLabel.innerHTML = "0";
-    var elms = document.getElementsByClassName("btn");
-    for (var i = 0; i < elms.length; i++) {
-        elms[i].classList.toggle("hidden");
-    }
-}
-function tick(time) {
-    timeLabel.innerHTML = moment.unix(time).format("mm:ss");
-    if (time === 0) {
-        toggleButtons();
-        return;
-    }
-    setTimeout(function () {
-        return tick(--time);
-    }, 1000);
-}
+var incBtn = document.getElementById('timer__inc-btn');
+incBtn.onclick = incTime;
+var decBtn = document.getElementById('timer__dec-btn');
+decBtn.onclick = decTime;
+var startBtn = document.getElementById('timer__start-btn');
+startBtn.onclick = start;
 
-},{"./greet":2,"moment":1}]},{},[3])
+},{"moment":1}]},{},[2])
 
 //# sourceMappingURL=bundle.js.map

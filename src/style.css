@@ -1,0 +1,74 @@
+:root {
+  --bg: #FAFFFA;
+  --bg-even: #DFEFDF;
+  --bg-hover: #AFBFAF;
+  --bg-head: #5A705F;
+  --bg-head-hover: #4A604F;
+  --arrow-unactive: lightgray;
+  --arrow-active: black;
+  --bg-del-btn: #AE402E;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  color: var(--bg-head-hover);
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.timer__inner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--bg-head-hover);
+  color: var(--bg-even);
+}
+
+.timer__desk {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+}
+
+.btn {
+  margin: 2px;
+  padding: 10px 25px;
+  outline: none;
+  border-radius: 5px;
+  font-family: "Arial", serif;
+  font-weight: bold;
+  font-size: 1em;
+  background-color: var(--bg-hover);
+  color: var(--bg-head-hover);
+  border-color: var(--bg-head-hover);
+}
+
+.timer__start-btn {
+  color: var(--bg-even);
+  background-color: var(--bg-del-btn);
+}
+
+.timer__time {
+  font-family: "Arial", serif;
+  font-weight: bold;
+  font-size: 3em;
+  color: var(--bg-even);
+}
+
+.hidden {
+  visibility: hidden;
+}

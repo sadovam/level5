@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <h1 class="title">Timer</h1>
+    <section class="timer">
+      <div class="container">
+        <div class="timer__inner">
+        <h2 class="timer__title" id="timer__title">Укажите время в минутах</h2>
+        <div class="timer__desk">
+          <button class="timer__dec-btn btn" id="timer__dec-btn">[ - ]</button>
+          <p class="timer__time" id="timer__time">0</p>
+          <button class="timer__inc-btn btn" id="timer__inc-btn">[ + ]</button>
+        </div>
+        <button class="timer__start-btn btn" id="timer__start-btn">Start</button>
+        </div>
+      </div>
+    </section>
     <p id="greeting">Loading ...</p>
     <script src="bundle.js"></script>
   </body>
